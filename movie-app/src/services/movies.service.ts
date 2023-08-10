@@ -1,12 +1,6 @@
 import axios, { AxiosError } from 'axios'
-import { ENV } from '../config/env.config';
-import { HttpStatusCode } from '../types/HttpStatus';
 import { handleHttpError } from '../utils/http.utils';
-const API_URL = 'https://api.themoviedb.org/3';
-const API_KEY = ENV.TMDB_API_KEY
-// const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
-// const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
-const language = 'es-ES'
+import { API_URL, API_KEY, language } from '../consts/movies.consts';
 
 export class MoviesService {
 
@@ -30,7 +24,7 @@ export class MoviesService {
 
     }
 
-    async getMoviesBySearch(query: string, page: number) {
+    async getMoviesBySearch(query: string | undefined, page: number) {
 
         try {
             const { data } = await axios.get(`${API_URL}/search/movie`, {

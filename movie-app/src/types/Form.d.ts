@@ -1,4 +1,4 @@
-export type HandleInputSearch = React.ChangeEvent<HTMLInputElement>
+export type HandleInputSearch = React.ChangeEvent<HTMLInputElement> | undefined
 
 export type HandleTextField = React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
 

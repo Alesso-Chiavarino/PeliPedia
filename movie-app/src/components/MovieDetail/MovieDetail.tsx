@@ -1,7 +1,7 @@
 import { Modal } from '@fluentui/react';
 import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
 import { useModal } from '../../hooks/useModal';
-import { URL_IMAGE } from '../../consts/tmdb.consts';
+import { URL_IMAGE } from '../../consts/movies.consts';
 
 interface MovieDetailProps {
     id: number;

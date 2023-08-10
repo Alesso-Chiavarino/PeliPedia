@@ -1,64 +1,23 @@
 import { type Movie } from '../../types/Movie'
 import { useMovies } from '../../hooks/useMovies';
 import { MovieCard } from '../MovieCard/MovieCard';
-import { Stack, TextField } from '@fluentui/react';
 import { NoMoviesResults } from '../NoMoviesResults/NoMoviesResults';
-import './MoviesContainer.scss'
-import { ActionButton } from '@fluentui/react/lib/Button';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
-import { SearchBox, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
+import './MoviesContainer.scss'
 
 export const MoviesContainer = () => {
 
-    const { movies, nextPage, prevPage, handleInputSearch, handleSubmit, handleTextField, error } = useMovies()
+    const { movies, error } = useMovies()
 
     initializeIcons(); //CAMBIAR DE LUGAR
 
-    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
     const hasMovies = movies.results.length > 0
 
     return (
         <section className='movies-section'>
-            <h3>List of Movies {movies.total_results}</h3>
-            <h3>Total pages {movies.total_pages}</h3>
+            <h3>Results: {movies.total_results}</h3>
+            <h3>Total pages: {movies.total_pages}</h3>
             <h3>Page: {movies.page}</h3>
-
-            <div>
-                <Stack
-                    horizontal
-                    horizontalAlign="space-between"
-                // tokens={{ childrenGap: 10 }} 
-                >
-                    <ActionButton
-                        iconProps={{ iconName: 'DoubleChevronLeftMed' }}
-                        ariaLabel="Anterior"
-                        onClick={prevPage}
-                        style={{ color: 'white' }}
-                    >
-                        Anterior
-                    </ActionButton>
-                    <ActionButton
-                        iconProps={{ iconName: 'DoubleChevronLeftMedMirrored' }}
-                        ariaLabel="Siguiente"
-                        onClick={nextPage}
-                        style={{ color: 'white' }}
-                    >
-                        Siguiente
-                    </ActionButton>
-                </Stack>
-            </div>
-
-            <form onSubmit={handleSubmit}>
-                <SearchBox
-                    styles={searchBoxStyles}
-                    onChange={handleInputSearch}
-                    placeholder='Vengadores, Barbie, ...'
-                />
-                {/* <input onChange={handleInputSearch} placeholder='Vengadores, Barbie, ...' /> */}
-                <button>Search</button>
-            </form>
-
-            <TextField label="Año de la película " onChange={handleTextField} />
 
             {!hasMovies && <NoMoviesResults error={error} />}
 

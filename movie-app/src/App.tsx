@@ -1,12 +1,6 @@
-import './App.css'
+import './App.scss'
 import { Home } from './pages/Home/Home';
 
-function App() {
-  return (
-    <>
-      <Home />
-    </>
-  )
+export const App = () => {
+  return <Home />
 }
-
-export default App

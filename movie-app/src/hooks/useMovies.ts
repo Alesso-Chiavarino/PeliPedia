@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react'
 import { useAppSelector } from "./store";
 import type { HandleSubmit, HandleTextField, HandleInputSearch } from '../types/Form'
 import { useMoviesActions } from "./useMoviesActions";
-import { QUERY_PAGE } from "../consts";
+import { QUERY_PAGE } from "../consts/movies.consts";
 import { setURLpage } from "../utils/pagination.utils";
 
 export const useMovies = () => {
 
     const [page, setPage] = useState(1)
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState<string | undefined>('')
     const [year, setYear] = useState(0)
     const [error, setError] = useState('')
 
@@ -61,12 +61,11 @@ export const useMovies = () => {
         return setMovies(res)
     }
 
-    const fetchMovies = async (query: string) => {
+    const fetchMovies = async (query: string | undefined) => {
 
         try {
 
             if (year && query) {
-                // console.log('aca')
                 const res = await moviesService.getMoviesBySearchAndYear(query, year, page)
                 return setMovies(res)
             }
@@ -94,7 +93,6 @@ export const useMovies = () => {
             setError(error.message)
         }
     }
-    // console.log(error)
 
     useEffect(() => {
         fetchMovies(query)

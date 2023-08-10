@@ -1,4 +1,4 @@
-import { URL_IMAGE } from '../../consts/tmdb.consts';
+import { URL_IMAGE } from '../../consts/movies.consts';
 import { MovieDetail } from '../MovieDetail/MovieDetail';
 import './MovieCard.scss'
 
