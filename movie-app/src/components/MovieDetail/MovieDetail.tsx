@@ -1,5 +1,5 @@
 import { Modal } from '@fluentui/react';
-import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { useModal } from '../../hooks/useModal';
 import { URL_IMAGE } from '../../consts/movies.consts';
 
@@ -9,14 +9,23 @@ interface MovieDetailProps {
 
 export const MovieDetail = ({ id }: MovieDetailProps) => {
 
-    const { contentStyles, hideModal, iconButtonStyles, isModalOpen, showModal, titleId,
+    const { contentStyles, hideModal, iconButtonStyles, isModalOpen, showModal, titleId, isLoading,
         movie: { overview, poster_path, release_date, title } } = useModal(id)
 
     const image = URL_IMAGE.concat(poster_path)
 
+    const buttonStyles: Partial<IButtonStyles> = {
+        root: {
+            width: '100%',
+            backgroundColor: '#27272A',
+            border: 'none',
+            color: '#fff',
+        },
+    };
+
     return (
         <div>
-            <DefaultButton onClick={showModal} text="Open Modal" />
+            <DefaultButton styles={buttonStyles} onClick={showModal} text="Detalles" />
             <Modal
                 titleAriaId={titleId}
                 isOpen={isModalOpen}
@@ -36,6 +45,7 @@ export const MovieDetail = ({ id }: MovieDetailProps) => {
                     />
                 </div>
                 <div className={contentStyles.body}>
+                    {isLoading && <div>Loading...</div>}
                     <img className={contentStyles.image} src={image} alt={title} />
                     <h3>{title}</h3>
                     <p>{overview}</p>

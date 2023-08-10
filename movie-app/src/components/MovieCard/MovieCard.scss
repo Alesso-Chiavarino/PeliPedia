@@ -3,8 +3,10 @@
     height: fit-content;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #eeeeee08;
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -13,5 +15,19 @@
     .movie-card__img {
         width: 100%;
         object-fit: cover;
+    }
+
+    .movie-card__body {
+        padding: 10px;
+
+        .body__title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .body__date {
+            font-size: 0.9rem;
+            color: #999;
+        }
     }
 }

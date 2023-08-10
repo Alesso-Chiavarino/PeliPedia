@@ -18,10 +18,12 @@ export const MovieCard = ({ title, image, date, id }: MovieCardProps) => {
             <li className='movie-card'>
                 <article>
                     <img src={cardImg} className='movie-card__img' alt={title} />
-                    <h4>{title}</h4>
-                    <span>{date}</span>
+                    <div className='movie-card__body'>
+                        <h4 className='body__title'>{title}</h4>
+                        <span className='body__date'>{date}</span>
+                    </div>
+                    <MovieDetail id={id} />
                 </article>
-                <MovieDetail id={id} />
             </li>
         </>
     )

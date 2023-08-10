@@ -5,19 +5,16 @@ import {
 } from '@fluentui/react';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { MoviesService } from '../services/movies.service';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { INITIAL_STATE } from '../consts/movies.consts';
 
 
 export const useModal = (id: number) => {
+
     const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
     const titleId = useId('title');
-    const [movie, setMovie] = useState({
-        id: 0,
-        overview: '',
-        title: '',
-        poster_path: '',
-        release_date: '',
-    })
+    const [movie, setMovie] = useState(INITIAL_STATE)
+    const [isLoading, setIsLoading] = useState(false)
 
     const contentStyles = mergeStyleSets({
         container: {
@@ -80,10 +77,19 @@ export const useModal = (id: number) => {
 
     const moviesService = new MoviesService()
 
-    const fetchMovie = async () => {
-        const res = await moviesService.getMovieDetailsById(id)
-        setMovie(res)
-    }
+    const fetchMovie = useCallback(async () => {
+        try {
+            setIsLoading(true)
+            const res = await moviesService.getMovieDetailsById(id)
+            setMovie(res)
+        } catch (err) {
+            console.log(err)
+        }
+        finally {
+            setIsLoading(false)
+        }
+    }, [id])
+
 
     useEffect(() => {
         if (isModalOpen) {
@@ -98,7 +104,8 @@ export const useModal = (id: number) => {
         titleId,
         contentStyles,
         iconButtonStyles,
-        movie
+        movie,
+        isLoading
     }
 
 }

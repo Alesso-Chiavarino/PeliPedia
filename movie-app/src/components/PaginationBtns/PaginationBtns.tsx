@@ -1,23 +1,56 @@
-import { Stack, ActionButton } from '@fluentui/react';
-
+import { Stack, ActionButton, IButtonStyles } from '@fluentui/react';
 interface PaginationBtnsProps {
     prevPage: () => void;
     nextPage: () => void;
+    page: number;
+    total_pages: number;
 }
 
-export const PaginationBtns = ({ prevPage, nextPage }: PaginationBtnsProps) => {
+export const PaginationBtns = ({ prevPage, nextPage, total_pages, page }: PaginationBtnsProps) => {
+
+    const LeftButtonStyle: IButtonStyles = {
+        root: {
+            backgroundColor: '#27272A',
+            color: 'white',
+            border: 'none',
+            display: 'flex',
+            selectors: {
+                ':hover': {
+                    backgroundColor: '#626567',
+                },
+            },
+        },
+        icon: {
+            color: 'white',
+        },
+        iconHovered: {
+            color: 'white',
+        },
+        label: {
+            color: 'white',
+        },
+    };
+
+    const RightButtonStyle: IButtonStyles = {
+        ...LeftButtonStyle,
+        flexContainer: {
+            flexDirection: 'row-reverse',
+        },
+    }
+
     return (
         <div>
             <Stack
                 horizontal
                 horizontalAlign="space-between"
-            // tokens={{ childrenGap: 10 }} 
             >
                 <ActionButton
                     iconProps={{ iconName: 'DoubleChevronLeftMed' }}
                     ariaLabel="Anterior"
                     onClick={prevPage}
-                    style={{ color: 'white' }}
+                    styles={LeftButtonStyle}
+                    style={page === 1 ? { backgroundColor: '#0D1117' } : {}}
+                    disabled={page === 1}
                 >
                     Anterior
                 </ActionButton>
@@ -25,7 +58,9 @@ export const PaginationBtns = ({ prevPage, nextPage }: PaginationBtnsProps) => {
                     iconProps={{ iconName: 'DoubleChevronLeftMedMirrored' }}
                     ariaLabel="Siguiente"
                     onClick={nextPage}
-                    style={{ color: 'white' }}
+                    styles={RightButtonStyle}
+                    style={page === total_pages ? { backgroundColor: '#0D1117' } : {}}
+                    disabled={page === total_pages}
                 >
                     Siguiente
                 </ActionButton>
