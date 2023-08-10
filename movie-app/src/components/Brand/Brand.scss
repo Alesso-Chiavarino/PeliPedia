@@ -1,0 +1,15 @@
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .brand__icon {
+        font-size: 30px;
+    }
+
+    .brand__name {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 40px 0;
+    }
+}

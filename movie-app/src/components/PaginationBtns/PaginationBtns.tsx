@@ -49,7 +49,7 @@ export const PaginationBtns = ({ prevPage, nextPage, total_pages, page }: Pagina
                     ariaLabel="Anterior"
                     onClick={prevPage}
                     styles={LeftButtonStyle}
-                    style={page === 1 ? { backgroundColor: '#0D1117' } : {}}
+                    style={page === 1 ? { backgroundColor: '#131314' } : {}}
                     disabled={page === 1}
                 >
                     Anterior
@@ -59,7 +59,7 @@ export const PaginationBtns = ({ prevPage, nextPage, total_pages, page }: Pagina
                     ariaLabel="Siguiente"
                     onClick={nextPage}
                     styles={RightButtonStyle}
-                    style={page === total_pages ? { backgroundColor: '#0D1117' } : {}}
+                    style={page === total_pages ? { backgroundColor: '#131314' } : {}}
                     disabled={page === total_pages}
                 >
                     Siguiente

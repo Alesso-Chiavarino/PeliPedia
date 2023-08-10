@@ -23,7 +23,7 @@ export const MoviesContainer = () => {
                 </div>
 
                 {(isLoading || (!hasMovies && !isLoading)) && (
-                    <h1>{isLoading ? 'Cargando...' : <NoMoviesResults error={error} />}</h1>
+                    <span>{isLoading ? 'Cargando...' : <NoMoviesResults error={error} />}</span>
                 )}
 
                 <ul className='movies-container'>

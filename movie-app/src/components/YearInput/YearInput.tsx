@@ -10,13 +10,18 @@ export const YearInput = ({ handleTextField }: YearInputProps) => {
     const textFieldStyles: Partial<ITextFieldStyles> = {
         root: {
             width: '10%',
+            '@media (max-width: 560px)': {
+                width: '30%',
+            },
         },
         fieldGroup: {
             borderColor: '#0078D4',
             backgroundColor: '#27272A',
+            border: 'none',
+            boxShadow: 'none',
             selectors: {
                 '::after': {
-                    borderColor: '#0078D4',
+                    border: '1px solid #ccc',
                 },
             },
         },
@@ -31,8 +36,7 @@ export const YearInput = ({ handleTextField }: YearInputProps) => {
             label: {
                 color: '#0078D4',
             },
-
-        }
+        },
     };
 
     return (

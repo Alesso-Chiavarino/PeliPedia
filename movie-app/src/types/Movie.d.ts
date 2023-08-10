@@ -1,8 +1,13 @@
+type Genre = {
+    id: number;
+    name: string;
+}
 export interface Movies {
     page: number;
     results: [];
     total_pages: number;
     total_results: number;
+    genres: Genre[];
 }
 
 export interface Movie {

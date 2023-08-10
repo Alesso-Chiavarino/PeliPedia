@@ -15,11 +15,20 @@ export const Filters = () => {
                 horizontalAlign="space-between"
                 verticalAlign="center"
                 wrap
+
                 styles={{
                     root: {
                         width: '100%',
                         margin: '40px 0',
                         color: '#fff',
+                        display: 'flex',
+                    },
+                    inner: {
+                        '@media (max-width: 560px)': {
+                            flexDirection: 'column',
+                            alignItems: 'initial',
+                            gap: '20px'
+                        }
                     }
                 }}
             >

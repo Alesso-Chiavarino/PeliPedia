@@ -16,7 +16,12 @@ export const InputSearch = ({ handleSubmit, handleInputSearch }: InputSearchProp
             textOverlineColor: '#fff',
             outline: 'none',
             border: 'none',
-            height: '40px'
+            height: '40px',
+            selectors: {
+                '::after': {
+                    border: '1px solid #ccc',
+                },
+            }
         },
         field: {
             borderColor: 'red',
@@ -51,7 +56,7 @@ export const InputSearch = ({ handleSubmit, handleInputSearch }: InputSearchProp
 
 
     return (
-        <form style={{ width: '40%', height: '40px' }} onSubmit={handleSubmit}>
+        <form className='form' style={{ width: '40%', height: '40px' }} onSubmit={handleSubmit}>
             <Stack
                 horizontal
                 verticalAlign="center"

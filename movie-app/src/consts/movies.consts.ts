@@ -6,6 +6,10 @@ export const INITIAL_STATE = {
     title: '',
     poster_path: '',
     release_date: '',
+    genres: [{
+        id: 0,
+        name: ''
+    }]
 }
 
 export const URL = 'https://api.themoviedb.org/3/search/movie?api_key=';

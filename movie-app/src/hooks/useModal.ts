@@ -57,7 +57,14 @@ export const useModal = (id: number) => {
             height: 'auto',
             maxHeight: '400px',
             objectFit: 'cover',
+        },
+        data: {
+            display: 'flex',
+            flexFlow: 'row wrap',
+            justifyContent: 'space-between',
+            alignItems: 'center',
         }
+
     });
 
     const iconButtonStyles: Partial<IButtonStyles> = {

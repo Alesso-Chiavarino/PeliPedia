@@ -1,9 +1,9 @@
-import './Header.scss'
+import { Brand } from '../Brand/Brand'
 
 export const Header = () => {
     return (
-        <header className='header'>
-            <h1 className="header__tile">PeliPedia</h1>
+        <header>
+            <Brand />
         </header>
     )
 }

@@ -10,7 +10,7 @@ interface MovieDetailProps {
 export const MovieDetail = ({ id }: MovieDetailProps) => {
 
     const { contentStyles, hideModal, iconButtonStyles, isModalOpen, showModal, titleId, isLoading,
-        movie: { overview, poster_path, release_date, title } } = useModal(id)
+        movie: { overview, poster_path, release_date, title, genres } } = useModal(id)
 
     const image = URL_IMAGE.concat(poster_path)
 
@@ -34,9 +34,7 @@ export const MovieDetail = ({ id }: MovieDetailProps) => {
                 containerClassName={contentStyles.container}
             >
                 <div className={contentStyles.header}>
-                    <h2 className={contentStyles.heading} id={titleId}>
-                        Movie Details
-                    </h2>
+                    <h2 className={contentStyles.heading} id={titleId}>Detalles de la película</h2>
                     <IconButton
                         styles={iconButtonStyles}
                         iconProps={{ iconName: 'Cancel' }}
@@ -45,11 +43,21 @@ export const MovieDetail = ({ id }: MovieDetailProps) => {
                     />
                 </div>
                 <div className={contentStyles.body}>
+
                     {isLoading && <div>Loading...</div>}
+
                     <img className={contentStyles.image} src={image} alt={title} />
                     <h3>{title}</h3>
+                    <hr />
                     <p>{overview}</p>
-                    <span>{release_date}</span>
+                    <div className={contentStyles.data}>
+                        <span>{release_date}</span>
+
+                        {!isLoading && <span >Géneros: {genres.map(genre => {
+                            return <span key={genre.id}>{genre.name} </span>
+                        })}</span>}
+
+                    </div>
                 </div>
             </Modal>
         </div>
