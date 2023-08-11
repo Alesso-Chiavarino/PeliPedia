@@ -22,11 +22,13 @@ Este repositorio contiene mi solución para la prueba técnica de desarrollo fro
 
 ## Instalación
 
-Para comenzar a trabajar con este proyecto, primero debes clonar el repositorio en tu máquina local:
+Para comenzar a trabajar con este proyecto, primero debemos clonar el repositorio en nuestra máquina local, para eso ejecutamos el siguiente comando en la terminal:
 
 ```
 git clone git@github.com:Alesso-Chiavarino/PeliPedia.git
 ```
+
+Después, debemos instalar las dependencias del proyecto usando:
 
 ```
 npm install
@@ -48,7 +50,7 @@ Para ejecutar el proyecto en modo desarrollo:
 npm run dev
 ```
 
-La aplicación se ejecutará en el puerto 5173.
+La aplicación se ejecutará en el puerto **5173**.
 
 ## Decisiones Técnicas
 
@@ -84,7 +86,7 @@ La aplicación se ejecutará en el puerto 5173.
 
 ## Stack Utilizado
 
-Obligatorios:
+Sugeridos:
 
 - React
 - TypeScript
