@@ -87,7 +87,7 @@ npm test
 
 - Si se quisiera extender la aplicación, según lo que he visto, la API permite ver trailers de las películas, por lo que se podría agregar un botón para ver el trailer de la película.
 - Se podría agregar un botón para agregar películas a una lista de favoritos.
-- Se podría agregar botónes para agregar películas a una lista de películas vistas, peliculas por ver, etc.
+- Se podría agregar botónes para agregar películas a una lista de películas vistas, peliculas por ver, sistema de autenticación e autorización, etc.
 - En terminos de diseño, hubiera estudiado más a fondo Fluent UI para poder utilizarlo de forma más eficiente y crear una interfaz más atractiva.
 
 [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
