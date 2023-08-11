@@ -128,7 +128,7 @@ describe('<App/>', () => {
         })
     })
 
-    test('should can filter movies by year', async () => {
+    test('should can search movies by year', async () => {
 
         await waitFor(() => {
 
