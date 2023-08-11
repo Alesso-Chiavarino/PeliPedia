@@ -63,8 +63,9 @@ npm test
 > ¿Cómo decidí las opciones técnicas y arquitectónicas utilizadas como parte de mi solución?
 
 - Se optó por utilizar la arquitectura de componentes funcionales con React Hooks para aprovechar las características más modernas de React.
+- Se aplicó el patrón de diseño Provider para manejar el estado global de la aplicación.
 - Redux se utilizó para gestionar el estado global de las películas, facilitando la comunicación entre componentes. Además, se utilizó Redux Toolkit por la legibilidad y facilidad de uso, además de evitar código boilerplate.
-- Se buscó separar la lógica de negocio de la interfaz de usuario, creando componentes de tipo presentacional y componentes de tipo contenedor.
+- Se buscó separar la lógica de negocio de la interfaz de usuario, haciendo uso del patrón de diseño presentacional y contenedor creando componentes de dichos tipos.
 - Pensando en la escalabilidad del proyecto, se crearon custom hooks para gestionar datos de la API, manejar la paginación y en caso de ser necesario, se creó una capa de abstracción para poder cambiar redux por otra forma de gestión de estado.
 - Creación de una capa de servicios para gestionar las llamadas a la API.
 - Se siguió una estructura de carpetas que permite una fácil organización y escalabilidad del código.
@@ -88,6 +89,7 @@ npm test
 - Si se quisiera extender la aplicación, según lo que he visto, la API permite ver trailers de las películas, por lo que se podría agregar un botón para ver el trailer de la película.
 - Se podría agregar un botón para agregar películas a una lista de favoritos.
 - Se podría agregar botónes para agregar películas a una lista de películas vistas, peliculas por ver, sistema de autenticación e autorización, etc.
+- En cuanto a testing se podría agregar más tests unitarios, como a la utilities functions, y custom hooks. Aclaración: Cuando se ejecutan todos los tests juntos pueden haber errores por la cantidad de llamadas a la API, pero si se ejecutan los tests de forma individual no debería haber problemas.
 - En terminos de diseño, hubiera estudiado más a fondo Fluent UI para poder utilizarlo de forma más eficiente y crear una interfaz más atractiva.
 
 [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
