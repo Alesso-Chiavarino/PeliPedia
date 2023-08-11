@@ -1,110 +1,111 @@
-
 # Prueba técnica — React developer - RAONA
 
-## Objetivo
+## Descripción
 
-El objetivo de esta prueba técnica es que el candidato muestre sus habilidades con las herramientas que utilizará luego en su trabajo diario en Raona. Está diseñado para verificar las habilidades de desarrollo front-end utilizando React y su capacidad para resolver problemas.
+Este repositorio contiene mi solución para la prueba técnica de desarrollo front-end en React para Raona. La aplicación consiste en una interfaz para buscar y ver detalles de películas utilizando la API de themoviedb. Se ha implementado siguiendo las mejores prácticas de desarrollo y haciendo uso de las herramientas recomendadas.
 
-Pondremos el foco en obtener un **código simple, bien diseñado y organizado, eficaz, pensando en el perfomance y en el uso de best practices**, así como el cumplimiento de todos los requerimientos solicitados.
-El objetivo es entender el punto o nivel técnico actual del developer con lo que se espera que la solución se pueda entregar en 2 o 3 dias (máx. 5).
+### Links
 
-**Lo que se intenta es valorar también el nivel resolutivo del developer, asi que en cualquier duda o problema, es preferible incluir en el `README` cualquier asumpción y continuar con el desarrollo.**
+- [https://pelipedia.vercel.app/](https://pelipedia.vercel.app/)
+- [Árbol de componentes](https://res.cloudinary.com/dotaebdx8/image/upload/v1691724161/components-tree_vvbxmm.png)
 
-## Desarrollo del proyecto
+## Tabla de Contenidos
 
-- Se deberá clonar este repositorio para poder modificarlo y completarlo con la resolución del proyecto.
-- Una vez que su código esté listo, suba el código a un repositorio público propio y envíenos el enlace a dicho repositorio para que lo revisaremos.
-- 
-Se deberá incluir también `README` con instrucciones de configuración/ejecución y cualquier prueba u otra documentación que haya creado como parte de su solución.
-Además, agregue la siguiente información a su archivo `README`:
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Ejecución](#ejecución)
+- [Decisiones Técnicas](#decisiones-técnicas)
+- [Posibles Mejoras](#posibles-mejoras)
+- [Posibles Extensiones](#posibles-extensiones)
+- [Stack Utilizado](#stack-utilizado)
+- [Árbol de Componentes](#árbol-de-componentes)
 
-- ¿Cómo decidió las opciones técnicas y arquitectónicas utilizadas como parte de su solución?
-- ¿Hay alguna mejora que pueda hacer en su envío?
-- ¿Qué haría de manera diferente si se le asignara más tiempo?
-  
-> Se pueden utilizar herramientas como Next.js, [create-react-app](https://github.com/facebookincubator/create-react-app) y similares para inicializar el proyecto.
+## Instalación
 
-## Prueba técnica
+Para comenzar a trabajar con este proyecto, primero debes clonar el repositorio en tu máquina local:
 
-Se pide una aplicación en React con typescript (funcional Hooks o por clases, a elección del developer ) con Redux para gestionar el estado. A nivel de interfície se pide utilizar [FluentUI](https://developer.microsoft.com/en-us/fluentui#/controls/web) Fluent UI a nivel de framework de componentes visuales.  Se pide desarrollar usando best practices a nivel de organización de código, separación por componentes, nomenclaturas .... (todo lo que el developer crea conveniente).
-Cree componentes para cada parte de la página (por ejemplo, encabezado, contenido, pie de página, etc.). Puede utilizar las imágenes externas que se requieran, simplemente hay que añadirlas a un directorio assets en el proyecto.
-
-A nivel de estilos se pide utilizar Sass siguiendo los mismos criterios de código en cuestión de best practices. (No se requiere y no se evaluará si una interfície es mas bonita que otra... )
-Se pide que el desarrollo sea responsive para verse en dispositivos móviles y que funcione en Chrome (no hace falta que sea compatible en mas navegadores).
-
-A nivel de backend se pide realizar las llamadas a la API gratis de [themoviedb](https://developer.themoviedb.org/docs). Para evitar tener que registraros se ha activado una cuenta temporal, y podéis usarla APIKey hbb243a88130a9fd8dcdc2880c7af4649 para las llamadas. (Si teneis cualquier problema , podéis registrar vosotros mismos una cuenta temporal).
-
-## Detalles
-Necesitará construir las siguientes 2 páginas con React:
-
-- Una página "Inicio" con el listado de Peliculas (visualmente con la imagen, el título y el año de la película) con un buscador por texto en el título.
-- Cuando se clique en el listado a una película, esta deberá llamar a la API para obtener el detalle de la película y mostrarse en un modal o panel con el "Detalle" de la pelicula
-
-
-### Otras consideraciones
-
-También necesitará manejar los estados de carga/loading y error de obtener los datos:
-
-- Estado de "Carga/Loading" 
-- Estado de "Error" 
-
-#### Opcional
-
-- Filtro por año
-  - agregar arriba del listado de series/películas un input que permita filtrar películas por año.
-- Paginación
-  - agregar un selector de cantidad de resultados a mostrar (5, 10, 20)
-  - permitir ir a próxima página de resultados o página anterior
-  - permitir moverse de página en página utilizando un parámetro en la URL
-
-## Requisitos de Stack
-
-Para el desarrollo de la aplicación deberá utilizar:
-
-- React / React Hooks
-- Typescript
-- Redux
-- Fluent UI
-- Uso de Sass
-- Mobile friendly
-- Manejo de errores
-- _(opcional)_ Unit tests (jest, react-testing-library, o similar)
-- _(opcional)_ Deploy automático
-- _(opcional)_ ...
-
-Importante saber:
-- No es necesario crear un entorno de desarrollo/producción.
-- Se pueden utilizar otras librerías que crea conveniente siempre que se explique el porque se ha utilizando en el `README`.
-
-
-> Happy coding!
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+git clone git@github.com:Alesso-Chiavarino/PeliPedia.git
 ```
 
-## api key used => 2e5cc13891fc400c318fba10975bd651
+```
+npm install
+```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Configuración
+
+Para poder utilizar la API de themoviedb es necesario crear un archivo `.env` en la raíz del proyecto con la siguiente variable de entorno:
+
+```
+REACT_APP_API_KEY= 2e5cc13891fc400c318fba10975bd651
+```
+
+## Ejecución
+
+Para ejecutar el proyecto en modo desarrollo:
+
+```
+npm run dev
+```
+
+La aplicación se ejecutará en el puerto 5173.
+
+## Decisiones Técnicas
+
+> ¿Cómo decidí las opciones técnicas y arquitectónicas utilizadas como parte de mi solución?
+
+- Se optó por utilizar la arquitectura de componentes funcionales con React Hooks para aprovechar las características más modernas de React.
+- Redux se utilizó para gestionar el estado global de las películas, facilitando la comunicación entre componentes. Además, se utilizó Redux Toolkit para evitar la necesidad de escribir código boilerplate.
+- Se buscó separar la lógica de negocio de la interfaz de usuario, creando componentes de tipo "presentacional" y componentes de tipo "contenedor".
+- Pensando de cara a la escalabilidad del proyecto, se crearon custom hooks para la obtención de datos de la API, gestión de la paginación y en caso de ser necesario, poder cambiar redux por otra forma de gestión de estado.
+- Se siguió una estructura de carpetas que permite una fácil organización y escalabilidad del código.
+  [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
+
+## Posibles Mejoras
+
+> ¿Hay alguna mejora que pueda hacer en mi envío?
+
+- Mejorar la interfaz de usuario, agregando animaciones y mejorando el diseño.
+- Mejorar la gestión de errores, agregando tipo de errores según el tipo de error que se reciba de la API. Segun lo que he visto, la API devuelve un error 404 cuando no encuentra una película, pero no devuelve un error cuando no encuentra resultados para una búsqueda.
+- Gestión de la paginación, seleccionando la cantidad de resultados a mostrar por página. Actualmente se muestran 20 resultados por página, la API solo permite mostrar 20 resultados por página y no permite cambiar la cantidad de resultados a mostrar.
+
+  [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
+
+## Posibles Extensiones
+
+> ¿Qué haría de manera diferente si se me asignara más tiempo?
+
+- Si se quisiera extender la aplicación, según lo que he visto, la API permite ver trailers de las películas, por lo que se podría agregar un botón para ver el trailer de la película.
+- Se podría agregar un botón para agregar películas a una lista de favoritos.
+- Se podría agregar botónes para agregar películas a una lista de películas vistas, peliculas por ver, etc.
+- En terminos de diseño, hubiera estudiado más a fondo Fluent UI para poder utilizarlo de forma más eficiente y crear una interfaz más atractiva.
+
+[<sub>Volver al Índice</sub>](#tabla-de-contenidos)
+
+## Stack Utilizado
+
+Obligatorios:
+
+- React
+- TypeScript
+- Redux / Redux Toolkit
+- Fluent UI
+- Sass
+- Responsive Design
+- Manejo de errores / cargas
+
+Complementarios:
+
+- Unit Testing y E2E Testing (vitest - react-testing-library)
+- Deploy (Vercel)
+- Axios (Gestionar mejor los errores y parametros de la API)
+
+[<sub>Volver al Índice</sub>](#tabla-de-contenidos)
+
+## Árbol de Componentes
+
+![](https://res.cloudinary.com/dotaebdx8/image/upload/v1691724161/components-tree_vvbxmm.png)
+
+[<sub>Volver al Índice</sub>](#tabla-de-contenidos)
+
+> Muchas gracias por la oportunidad!
