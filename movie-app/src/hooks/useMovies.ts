@@ -2,8 +2,7 @@ import { MoviesService } from "../services/movies.service";
 import { useState, useEffect, useCallback } from 'react';
 import { useAppSelector } from "./store";
 import { useMoviesActions } from "./useMoviesActions";
-import { QUERY_PAGE } from "../consts/movies.consts";
-import { setURLpage } from "../utils/pagination.utils";
+import { setURLpage, getPageNumber } from "../utils/pagination.utils";
 import type { HandleSubmit, HandleTextField, HandleInputSearch } from '../types/Form';
 
 export const useMovies = () => {
@@ -19,17 +18,21 @@ export const useMovies = () => {
 
     const moviesService = new MoviesService();
 
-    const pageNumber = new URLSearchParams(window.location.search).get(QUERY_PAGE);
+    const pageNumber = getPageNumber();
 
     const fetchMovies = useCallback(async (searchQuery: string | undefined) => {
+
+        setIsLoading(true);
+
         try {
-            setIsLoading(true);
 
             if (year && searchQuery) {
+                setPage(1);
                 return await moviesService.getMoviesBySearchAndYear(searchQuery, year, page);
             }
 
             if (year) {
+                setPage(1);
                 return await moviesService.getMoviesByYear(year, page);
             }
 
@@ -65,7 +68,7 @@ export const useMovies = () => {
         setURLpage(1);
 
         const res = await fetchMovies(query);
-        setMovies(res);
+        res && setMovies(res);
     }
 
 
@@ -83,19 +86,18 @@ export const useMovies = () => {
 
     useEffect(() => {
         fetchMovies(query).then((res) => {
-            setMovies(res);
+            res && setMovies(res);
         });
     }, [page]);
 
     return {
+        isLoading,
+        error,
         movies,
         nextPage,
         prevPage,
         handleInputSearch,
         handleSubmit,
         handleTextField,
-        error,
-        isLoading,
-        page
     }
 }

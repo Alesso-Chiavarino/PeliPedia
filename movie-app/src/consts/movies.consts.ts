@@ -1,6 +1,6 @@
 import { ENV } from "../config/env.config";
 
-export const INITIAL_STATE = {
+export const MOVIE_INITIAL_STATE = {
     id: 0,
     overview: '',
     title: '',
@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
     genres: [{
         id: 0,
         name: ''
-    }]
+    }],
 }
 
 export const URL = 'https://api.themoviedb.org/3/search/movie?api_key=';

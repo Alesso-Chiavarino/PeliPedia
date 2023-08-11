@@ -2,6 +2,7 @@ import { type Movie } from '../../types/Movie'
 import { useMovies } from '../../hooks/useMovies';
 import { MovieCard } from '../MovieCard/MovieCard';
 import { NoMoviesResults } from '../NoMoviesResults/NoMoviesResults';
+import { Loader } from '../Loader/Loader';
 import './MoviesContainer.scss'
 
 export const MoviesContainer = () => {
@@ -23,7 +24,7 @@ export const MoviesContainer = () => {
                 </div>
 
                 {(isLoading || (!hasMovies && !isLoading)) && (
-                    <span>{isLoading ? 'Cargando...' : <NoMoviesResults error={error} />}</span>
+                    <span>{isLoading ? <Loader /> : <NoMoviesResults error={error} />}</span>
                 )}
 
                 <ul className='movies-container'>

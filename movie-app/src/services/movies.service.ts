@@ -1,10 +1,10 @@
 import axios, { AxiosError } from 'axios'
 import { handleHttpError } from '../utils/http.utils';
 import { API_URL, API_KEY, language } from '../consts/movies.consts';
-
+import { MovieDetailResponse, type MoviesResponse } from '../types/Movie';
 export class MoviesService {
 
-    async getAllMovies(page: number) {
+    async getAllMovies(page: number): Promise<MoviesResponse> {
 
         try {
             const { data } = await axios.get(`${API_URL}/discover/movie`, {
@@ -19,12 +19,12 @@ export class MoviesService {
 
         } catch (err) {
             const error = err as AxiosError
-            handleHttpError(error)
+            return handleHttpError(error)
         }
 
     }
 
-    async getMoviesBySearch(query: string | undefined, page: number) {
+    async getMoviesBySearch(query: string | undefined, page: number): Promise<MoviesResponse> {
 
         try {
             const { data } = await axios.get(`${API_URL}/search/movie`, {
@@ -37,11 +37,12 @@ export class MoviesService {
             })
             return data
         } catch (err) {
-            throw new Error('Error searching movies by query')
+            const error = err as AxiosError
+            return handleHttpError(error)
         }
     }
 
-    async getMoviesByYear(year: number, page: number) {
+    async getMoviesByYear(year: number, page: number): Promise<MoviesResponse> {
         try {
             const { data } = await axios.get(`${API_URL}/discover/movie`, {
                 params: {
@@ -53,11 +54,12 @@ export class MoviesService {
             })
             return data
         } catch (err) {
-            throw new Error('Error searching movies by year')
+            const error = err as AxiosError
+            return handleHttpError(error)
         }
     }
 
-    async getMoviesBySearchAndYear(query: string, year: number, page: number) {
+    async getMoviesBySearchAndYear(query: string, year: number, page: number): Promise<MoviesResponse> {
         try {
             const { data } = await axios.get(`${API_URL}/search/movie`, {
                 params: {
@@ -70,11 +72,12 @@ export class MoviesService {
             })
             return data
         } catch (err) {
-            throw new Error('Error searching movies by query and year')
+            const error = err as AxiosError
+            return handleHttpError(error)
         }
     }
 
-    async getMovieDetailsById(id: number) {
+    async getMovieDetailsById(id: number): Promise<MovieDetailResponse> {
         try {
             const { data } = await axios.get(`${API_URL}/movie/${id}`, {
                 params: {
@@ -84,7 +87,8 @@ export class MoviesService {
             })
             return data
         } catch (err) {
-            throw new Error('Error searching movie details')
+            const error = err as AxiosError
+            return handleHttpError(error)
         }
     }
 

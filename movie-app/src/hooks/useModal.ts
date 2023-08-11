@@ -6,14 +6,13 @@ import {
 import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { MoviesService } from '../services/movies.service';
 import { useState, useEffect, useCallback } from 'react'
-import { INITIAL_STATE } from '../consts/movies.consts';
-
+import { MOVIE_INITIAL_STATE } from '../consts/movies.consts';
 
 export const useModal = (id: number) => {
 
     const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
     const titleId = useId('title');
-    const [movie, setMovie] = useState(INITIAL_STATE)
+    const [movie, setMovie] = useState(MOVIE_INITIAL_STATE)
     const [isLoading, setIsLoading] = useState(false)
 
     const contentStyles = mergeStyleSets({
