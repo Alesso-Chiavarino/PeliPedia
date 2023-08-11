@@ -14,7 +14,7 @@ export const movieSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-        setMoviesAction: (state, { payload }: PayloadAction<Movies>) => {
+        setMoviesAction: (_, { payload }: PayloadAction<Movies>) => {
             return {
                 page: payload.page,
                 results: payload.results,
