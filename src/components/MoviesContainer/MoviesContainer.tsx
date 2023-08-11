@@ -3,11 +3,14 @@ import { useMovies } from '../../hooks/useMovies';
 import { MovieCard } from '../MovieCard/MovieCard';
 import { NoMoviesResults } from '../NoMoviesResults/NoMoviesResults';
 import { Loader } from '../Loader/Loader';
+import { useAppSelector } from '../../hooks/store';
 import './MoviesContainer.scss'
 
 export const MoviesContainer = () => {
 
-    const { movies, error, isLoading } = useMovies()
+    const { movies, isLoading } = useMovies()
+
+    const error = useAppSelector(state => state.errors)
 
     const hasMovies = movies.results.length > 0
 
@@ -24,7 +27,7 @@ export const MoviesContainer = () => {
                 </div>
 
                 {(isLoading || (!hasMovies && !isLoading)) && (
-                    <span>{isLoading ? <Loader /> : <NoMoviesResults error={error} />}</span>
+                    <span>{isLoading ? <Loader /> : <NoMoviesResults error={error.message} />}</span>
                 )}
 
                 <ul className='movies-container'>

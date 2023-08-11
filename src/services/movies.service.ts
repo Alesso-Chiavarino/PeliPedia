@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { handleHttpError } from '../utils/http.utils';
+import { handleHttpError } from '../utils/error.utils';
 import { API_URL, API_KEY, language } from '../consts/movies.consts';
 import { MovieDetailResponse, type MoviesResponse } from '../types/Movie';
 export class MoviesService {
@@ -19,7 +19,7 @@ export class MoviesService {
 
         } catch (err) {
             const error = err as AxiosError
-            return handleHttpError(error)
+            return handleHttpError(error, 'movies')
         }
 
     }
@@ -38,7 +38,7 @@ export class MoviesService {
             return data
         } catch (err) {
             const error = err as AxiosError
-            return handleHttpError(error)
+            return handleHttpError(error, 'movies')
         }
     }
 
@@ -55,7 +55,7 @@ export class MoviesService {
             return data
         } catch (err) {
             const error = err as AxiosError
-            return handleHttpError(error)
+            return handleHttpError(error, 'movies')
         }
     }
 
@@ -73,7 +73,7 @@ export class MoviesService {
             return data
         } catch (err) {
             const error = err as AxiosError
-            return handleHttpError(error)
+            return handleHttpError(error, 'movies')
         }
     }
 
@@ -88,7 +88,7 @@ export class MoviesService {
             return data
         } catch (err) {
             const error = err as AxiosError
-            return handleHttpError(error)
+            return handleHttpError(error, 'movie-detail')
         }
     }
 

@@ -7,6 +7,7 @@ import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { MoviesService } from '../services/movies.service';
 import { useState, useEffect, useCallback } from 'react'
 import { MOVIE_INITIAL_STATE } from '../consts/movies.consts';
+import { useErrorsActions } from './useErrorsActions'
 
 export const useModal = (id: number) => {
 
@@ -14,6 +15,8 @@ export const useModal = (id: number) => {
     const titleId = useId('title');
     const [movie, setMovie] = useState(MOVIE_INITIAL_STATE)
     const [isLoading, setIsLoading] = useState(false)
+
+    const { setError } = useErrorsActions()
 
     const contentStyles = mergeStyleSets({
         container: {
@@ -89,7 +92,8 @@ export const useModal = (id: number) => {
             const res = await moviesService.getMovieDetailsById(id)
             setMovie(res)
         } catch (err) {
-            console.log(err)
+            const error = err as Error
+            setError(error)
         }
         finally {
             setIsLoading(false)

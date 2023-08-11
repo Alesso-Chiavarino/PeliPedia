@@ -1,1 +1,0 @@
-export type HttpStatusCode = 400 | 401 | 403 | 404 | 500; // Agrega otros códigos si es necesario

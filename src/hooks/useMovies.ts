@@ -3,13 +3,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAppSelector } from "./store";
 import { useMoviesActions } from "./useMoviesActions";
 import { setURLpage, getPageNumber } from "../utils/pagination.utils";
+import { useErrorsActions } from './useErrorsActions'
 import type { HandleSubmit, HandleTextField, HandleInputSearch } from '../types/Form';
+import { type Query } from "../types/Params";
 
 export const useMovies = () => {
     const [page, setPage] = useState(1);
-    const [query, setQuery] = useState<string | undefined>('');
+    const [query, setQuery] = useState<Query>('');
     const [year, setYear] = useState(0);
-    const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const { setMovies } = useMoviesActions();
@@ -20,7 +21,9 @@ export const useMovies = () => {
 
     const pageNumber = getPageNumber();
 
-    const fetchMovies = useCallback(async (searchQuery: string | undefined) => {
+    const { setError } = useErrorsActions()
+
+    const fetchMovies = useCallback(async (searchQuery: Query) => {
 
         setIsLoading(true);
 
@@ -48,11 +51,12 @@ export const useMovies = () => {
 
         } catch (err) {
             const error = err as Error;
-            setError(error.message);
+            setError(error);
         } finally {
             setIsLoading(false);
         }
     }, [page, year])
+
 
     const handleInputSearch = (e: HandleInputSearch) => {
         setQuery(e?.target.value);
@@ -84,6 +88,7 @@ export const useMovies = () => {
         setURLpage(page - 1);
     }
 
+
     useEffect(() => {
         fetchMovies(query).then((res) => {
             res && setMovies(res);
@@ -92,7 +97,6 @@ export const useMovies = () => {
 
     return {
         isLoading,
-        error,
         movies,
         nextPage,
         prevPage,

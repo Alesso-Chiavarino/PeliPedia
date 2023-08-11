@@ -14,14 +14,12 @@ export const movieSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-        setMoviesAction: (_, { payload }: PayloadAction<Movies>) => {
-            return {
-                page: payload.page,
-                results: payload.results,
-                total_pages: payload.total_pages,
-                total_results: payload.total_results,
-            }
-        }
+        setMoviesAction: (state, { payload }: PayloadAction<Movies>) => {
+            state.page = payload.page
+            state.results = payload.results
+            state.total_pages = payload.total_pages
+            state.total_results = payload.total_results
+        },
     },
 })
 

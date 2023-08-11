@@ -52,15 +52,23 @@ npm run dev
 
 La aplicación se ejecutará en el puerto **5173**.
 
+Para ejecutar los tests:
+
+```
+npm test
+```
+
 ## Decisiones Técnicas
 
 > ¿Cómo decidí las opciones técnicas y arquitectónicas utilizadas como parte de mi solución?
 
 - Se optó por utilizar la arquitectura de componentes funcionales con React Hooks para aprovechar las características más modernas de React.
-- Redux se utilizó para gestionar el estado global de las películas, facilitando la comunicación entre componentes. Además, se utilizó Redux Toolkit para evitar la necesidad de escribir código boilerplate.
-- Se buscó separar la lógica de negocio de la interfaz de usuario, creando componentes de tipo "presentacional" y componentes de tipo "contenedor".
-- Pensando de cara a la escalabilidad del proyecto, se crearon custom hooks para la obtención de datos de la API, gestión de la paginación y en caso de ser necesario, poder cambiar redux por otra forma de gestión de estado.
+- Redux se utilizó para gestionar el estado global de las películas, facilitando la comunicación entre componentes. Además, se utilizó Redux Toolkit por la legibilidad y facilidad de uso, además de evitar código boilerplate.
+- Se buscó separar la lógica de negocio de la interfaz de usuario, creando componentes de tipo presentacional y componentes de tipo contenedor.
+- Pensando en la escalabilidad del proyecto, se crearon custom hooks para gestionar datos de la API, manejar la paginación y en caso de ser necesario, se creó una capa de abstracción para poder cambiar redux por otra forma de gestión de estado.
+- Creación de una capa de servicios para gestionar las llamadas a la API.
 - Se siguió una estructura de carpetas que permite una fácil organización y escalabilidad del código.
+- Para Sass se utilizó la metodología BEM para facilitar la legibilidad.
   [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
 
 ## Posibles Mejoras
@@ -68,8 +76,8 @@ La aplicación se ejecutará en el puerto **5173**.
 > ¿Hay alguna mejora que pueda hacer en mi envío?
 
 - Mejorar la interfaz de usuario, agregando animaciones y mejorando el diseño.
-- Mejorar la gestión de errores, agregando tipo de errores según el tipo de error que se reciba de la API. Segun lo que he visto, la API devuelve un error 404 cuando no encuentra una película, pero no devuelve un error cuando no encuentra resultados para una búsqueda.
-- Gestión de la paginación, seleccionando la cantidad de resultados a mostrar por página. Actualmente se muestran 20 resultados por página, la API solo permite mostrar 20 resultados por página y no permite cambiar la cantidad de resultados a mostrar.
+- Mejorar la gestión de errores, agregando tipo de errores según el tipo de error que se reciba de la API. Según lo que he visto, la API devuelve un error 404 cuando no encuentra una película, pero no devuelve un error cuando no encuentra resultados para una búsqueda.
+- Gestión de la paginación, seleccionando la cantidad de resultados a mostrar por página. Actualmente se muestran 20 resultados por página, la API solo envia 20 resultados y no permite cambiar la cantidad de resultados a mostrar. Según lo que he leído, antes se permitía modificar la cantidad de resultados a mostrar, pero ahora no.
 
   [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
 

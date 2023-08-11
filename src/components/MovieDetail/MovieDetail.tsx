@@ -2,6 +2,8 @@ import { Modal } from '@fluentui/react';
 import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { useModal } from '../../hooks/useModal';
 import { URL_IMAGE } from '../../consts/movies.consts';
+import { Loader } from '../Loader/Loader';
+import { useAppSelector } from '../../hooks/store';
 
 interface MovieDetailProps {
     id: number;
@@ -22,6 +24,10 @@ export const MovieDetail = ({ id }: MovieDetailProps) => {
             color: '#fff',
         },
     };
+
+    const error = useAppSelector(state => state.errors)
+
+    const hasDetails = overview && poster_path && release_date && title && genres
 
     return (
         <div>
@@ -44,7 +50,11 @@ export const MovieDetail = ({ id }: MovieDetailProps) => {
                 </div>
                 <div className={contentStyles.body}>
 
-                    {isLoading && <div>Loading...</div>}
+                    {(isLoading || (!hasDetails && !isLoading)) && (
+                        <span>{isLoading ? <Loader /> : <h3>{error.message}</h3>}</span>
+                    )}
+
+                    {/* {isLoading && <div>Loading...</div>} */}
 
                     <img className={contentStyles.image} src={image} alt={title} />
                     <h3>{title}</h3>

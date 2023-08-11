@@ -5,8 +5,11 @@ import React from 'react'
 import { fireEvent, waitFor } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { store } from '../src/app/store'
+import { initializeIcons } from '@fluentui/react'
 
 describe('<App/>', () => {
+
+    initializeIcons()
 
     beforeEach(() => {
         render(
