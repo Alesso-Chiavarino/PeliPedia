@@ -39,7 +39,7 @@ npm install
 Para poder utilizar la API de themoviedb es necesario crear un archivo `.env` en la raíz del proyecto con la siguiente variable de entorno:
 
 ```
-REACT_APP_API_KEY= 2e5cc13891fc400c318fba10975bd651
+VITE_TMDB_API_KEY= 2e5cc13891fc400c318fba10975bd651
 ```
 
 ## Ejecución
