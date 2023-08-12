@@ -77,7 +77,7 @@ npm test
 > ¿Hay alguna mejora que pueda hacer en mi envío?
 
 - Mejorar la interfaz de usuario, agregando animaciones y mejorando el diseño.
-- Mejorar la gestión de errores, agregando tipo de errores según el tipo de error que se reciba de la API. Según lo que he visto, la API devuelve un error 404 cuando no encuentra una película, pero no devuelve un error cuando no encuentra resultados para una búsqueda.
+- Mejorar la gestión de errores, agregando tipo de errores según el tipo de error que se reciba de la API. Según lo que he visto, la API no devuelve muchos status de errores, por ejemplo no devuelve un error cuando no se encuentran resultados para una búsqueda.
 - Gestión de la paginación, seleccionando la cantidad de resultados a mostrar por página. Actualmente se muestran 20 resultados por página, la API solo envia 20 resultados y no permite cambiar la cantidad de resultados a mostrar. Según lo que he leído, antes se permitía modificar la cantidad de resultados a mostrar, pero ahora no.
 
   [<sub>Volver al Índice</sub>](#tabla-de-contenidos)
